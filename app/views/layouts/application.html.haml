@@ -2,7 +2,7 @@
   %head
     %meta{charset: 'utf-8'}/
     %title
-      Jobs
+      Honour, glory
     = csrf_meta_tags
     = csp_meta_tag
 
@@ -10,4 +10,6 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
   %body
-    = yield
+    = render partial: 'shared/navbar'
+    .container.mt-5
+      = yield
