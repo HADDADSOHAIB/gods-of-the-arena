@@ -1,31 +1,30 @@
-%h1 Listing gladiators
+%h1.text-center.fst-italic Gods Of The Arena
 
-%table
-  %thead
+.mt-5.d-flex.justify-content-end
+  = link_to 'Recrute a gladiator', new_gladiator_path, class: 'btn btn-outline-primary'
+  = link_to 'Start a fight', '#', class: 'btn btn-danger ms-2'
+
+%table.table.mt-2.mb-5.table-hover.table-responsive
+  %thead.table-primary
     %tr
-      %th Name
-      %th Life points
-      %th Attack points
-      %th Magic points
-      %th Health status
-      %th Age
-      %th
-      %th
-      %th
+      %th.px-md-4.py-md-3{scope: 'col'} Id
+      %th.px-md-4.py-md-3{scope: 'col'} Name
+      %th.px-md-4.py-md-3{scope: 'col'} Life points
+      %th.px-md-4.py-md-3{scope: 'col'} Attack points
+      %th.px-md-4.py-md-3{scope: 'col'} Magic points
+      %th.px-md-4.py-md-3{scope: 'col'} Health status
+      %th.px-md-4.py-md-3{scope: 'col'} Age
+      %th.px-md-4.py-md-3{scope: 'col'}
 
   %tbody
     - @gladiators.each do |gladiator|
       %tr
-        %td= gladiator.name
-        %td= gladiator.life_points
-        %td= gladiator.attack_points
-        %td= gladiator.magic_points
-        %td= gladiator.health_status
-        %td= gladiator.age
-        %td= link_to 'Show', gladiator
-        %td= link_to 'Edit', edit_gladiator_path(gladiator)
-        %td= link_to 'Destroy', gladiator, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Gladiator', new_gladiator_path
+        %td.px-md-4.py-md-3{scope: 'row'}= gladiator.id
+        %td.px-md-4.py-md-3= gladiator.name
+        %td.px-md-4.py-md-3= gladiator.life_points
+        %td.px-md-4.py-md-3= gladiator.attack_points
+        %td.px-md-4.py-md-3= gladiator.magic_points
+        %td.px-md-4.py-md-3= gladiator.health_status_human
+        %td.px-md-4.py-md-3= gladiator.age
+        %td.px-md-4.py-md-3.text-end
+          = link_to 'Details', gladiator, class: 'btn btn-primary'

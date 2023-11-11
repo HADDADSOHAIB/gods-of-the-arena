@@ -18,6 +18,9 @@
 %p
   %b Age:
   = @gladiator.age
+%p
+  %b Avatar:
+  = image_tag rails_blob_path(@gladiator.avatar) if @gladiator.avatar.attached?
 
 = link_to 'Edit', edit_gladiator_path(@gladiator)
 \|

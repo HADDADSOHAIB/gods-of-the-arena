@@ -49,6 +49,6 @@ class GladiatorsController < ApplicationController
     end
 
     def gladiator_params
-      params.require(:gladiator).permit(:name, :life_points, :attack_points, :magic_points, :health_status, :age)
+      params.require(:gladiator).permit(:name, :life_points, :attack_points, :magic_points, :health_status, :age, :avatar)
     end
 end

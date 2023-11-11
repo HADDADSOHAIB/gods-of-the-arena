@@ -31,3 +31,11 @@
 
 en:
   hello: "Hello world"
+  gladiators:
+    attributes:
+      health_status:
+        ready_for_fight: Ready for the fight
+        recovering_from_fight: Still recovering from the last fight
+        dead: Dead
+
+      
