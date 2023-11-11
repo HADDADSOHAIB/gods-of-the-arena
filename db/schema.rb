@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_11_131112) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_11_173937) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,6 +39,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_11_131112) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "fights", force: :cascade do |t|
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "gladiator_fights", force: :cascade do |t|
+    t.boolean "battle_won"
+    t.integer "gladiator_id"
+    t.integer "fight_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fight_id"], name: "index_gladiator_fights_on_fight_id"
+    t.index ["gladiator_id"], name: "index_gladiator_fights_on_gladiator_id"
+  end
+
   create_table "gladiators", force: :cascade do |t|
     t.string "name", null: false
     t.integer "life_points", default: 100, null: false
@@ -52,4 +68,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_11_131112) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "gladiator_fights", "fights", on_delete: :nullify
+  add_foreign_key "gladiator_fights", "gladiators", on_delete: :nullify
 end
