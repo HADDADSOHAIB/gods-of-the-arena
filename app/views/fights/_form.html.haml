@@ -1,0 +1,27 @@
+.d-flex.justify-content-center
+  .card.card-standard-width.container-fluid
+    = form_for @fight_form, url: fights_path do |f|
+      - if @fight_form.errors.any?
+        #error_explanation
+          %span= "#{pluralize(@fight_form.errors.count, "error")} prohibited this fight from starting:"
+          %ul
+            - @fight_form.errors.full_messages.each do |message|
+              %li= message
+
+      .card-body
+        .row
+          .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold.my-1
+            = f.label :first_gladiator_id, 'The first gladiator:', class: 'form-label'
+          .col-12.col-md-6.d-flex.justify-content-start.my-1
+            = f.select :first_gladiator_id, Gladiator.health_status_ready_for_fight.map{[_1.name, _1.id]}, { required: true }, { class: 'form-control'}
+
+          .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold.my-1
+            = f.label :second_gladiator_id, 'The second gladiator:', class: 'form-label'
+          .col-12.col-md-6.d-flex.justify-content-start.my-1
+            = f.select :second_gladiator_id, Gladiator.health_status_ready_for_fight.map{[_1.name, _1.id]}, { required: true }, { class: 'form-control'}
+
+        .my-3.d-flex.justify-content-center
+          = f.submit 'Start the fight', class: 'btn btn-danger'
+          = link_to 'Back to the arena', root_path, class: 'btn btn-secondary ms-2'
+
+

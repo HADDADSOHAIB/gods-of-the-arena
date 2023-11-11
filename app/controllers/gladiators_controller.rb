@@ -25,7 +25,7 @@ class GladiatorsController < ApplicationController
     if @gladiator.save
       redirect_to gladiator_url(@gladiator), notice: "Gladiator was successfully created."
     else
-      render :new, status: :unprocessable_entity
+      render :new
     end
   end
 
@@ -44,11 +44,11 @@ class GladiatorsController < ApplicationController
   end
 
   private
-    def set_gladiator
-      @gladiator = Gladiator.find(params[:id])
-    end
+  def set_gladiator
+    @gladiator = Gladiator.find(params[:id])
+  end
 
-    def gladiator_params
-      params.require(:gladiator).permit(:name, :life_points, :attack_points, :magic_points, :health_status, :age, :avatar)
-    end
+  def gladiator_params
+    params.require(:gladiator).permit(:name, :life_points, :attack_points, :magic_points, :health_status, :age, :avatar)
+  end
 end
