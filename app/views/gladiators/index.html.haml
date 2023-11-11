@@ -1,5 +1,10 @@
 %h1.text-center.fst-italic Gods Of The Arena
 
+- if notice
+  .alert.alert-success.alert-dismissible.fade.show{role: 'alert'}
+    = notice
+    %button.btn-close{type: 'button', 'data-bs-dismiss': 'alert', 'aria-label': 'Close'}
+
 .mt-5.d-flex.justify-content-end
   = link_to 'Recrute a gladiator', new_gladiator_path, class: 'btn btn-outline-primary'
   = link_to 'Start a fight', '#', class: 'btn btn-danger ms-2'

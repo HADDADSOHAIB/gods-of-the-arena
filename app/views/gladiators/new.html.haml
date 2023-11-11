@@ -1,5 +1,8 @@
-%h1 New gladiator
+.text-center.fst-italic
+  %h1 Enter gladiator information and save to start the fight
 
-= render 'form'
+.d-flex.justify-content-center
+  = link_to 'Back to gladiators list', gladiators_path, class: 'btn btn-secondary'
 
-= link_to 'Back', gladiators_path
+.my-4
+  = render 'form'

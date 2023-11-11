@@ -1,27 +1,39 @@
-%p#notice= notice
+- if notice
+  .alert.alert-success.alert-dismissible.fade.show{role: 'alert'}
+    = notice
+    %button.btn-close{type: 'button', 'data-bs-dismiss': 'alert', 'aria-label': 'Close'}
 
-%p
-  %b Name:
-  = @gladiator.name
-%p
-  %b Life points:
-  = @gladiator.life_points
-%p
-  %b Attack points:
-  = @gladiator.attack_points
-%p
-  %b Magic points:
-  = @gladiator.magic_points
-%p
-  %b Health status:
-  = @gladiator.health_status
-%p
-  %b Age:
-  = @gladiator.age
-%p
-  %b Avatar:
-  = image_tag rails_blob_path(@gladiator.avatar) if @gladiator.avatar.attached?
 
-= link_to 'Edit', edit_gladiator_path(@gladiator)
-\|
-= link_to 'Back', gladiators_path
+.d-flex.justify-content-center
+  .card.card-standard-width
+    = image_tag @gladiator.avatar_path_wrapper, class: 'card-img-top'
+    .card-body
+      .row
+        .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold
+          Name:
+        .col-12.col-md-6.d-flex.justify-content-start
+          = @gladiator.name
+        .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold
+          Life points:
+        .col-12.col-md-6.d-flex.justify-content-start
+          = @gladiator.life_points
+        .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold
+          Attack points:
+        .col-12.col-md-6.d-flex.justify-content-start
+          = @gladiator.attack_points
+        .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold
+          Magic points:
+        .col-12.col-md-6.d-flex.justify-content-start
+          = @gladiator.magic_points
+        .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold
+          Health status:
+        .col-12.col-md-6.d-flex.justify-content-start
+          = @gladiator.health_status_human
+        .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold
+          Age:
+        .col-12.col-md-6.d-flex.justify-content-start
+          = @gladiator.age
+      .my-3.d-flex.justify-content-center
+        = link_to 'Edit', edit_gladiator_path(@gladiator), class: 'btn btn-primary mx-1'
+        = link_to 'Remove', gladiator_path(@gladiator), method: :delete, data: { confirm: 'Are you sure ?'}, class: 'btn btn-danger mx-1'
+        = link_to 'Back', gladiators_path, class: 'btn btn-secondary mx-1'

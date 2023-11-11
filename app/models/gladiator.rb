@@ -15,9 +15,13 @@ class Gladiator < ApplicationRecord
     I18n.t("gladiators.attributes.health_status.#{health_status}")
   end
 
+  def avatar_path_wrapper
+    avatar.attached? ? Rails.application.routes.url_helpers.rails_blob_path(avatar) : 'default-gladiator.jpeg'
+  end
+
   #==== Class methods ====
 
   def self.health_status_human_wrapper
-    health_statuses.map{|(k, v)|[k, I18n.t("gladiators.attributes.health_status.#{k}")]}
+    health_statuses.map{|(k, _)|[I18n.t("gladiators.attributes.health_status.#{k}"), k]}
   end
 end

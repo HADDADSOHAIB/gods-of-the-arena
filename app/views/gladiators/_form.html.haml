@@ -1,28 +1,42 @@
-= form_for @gladiator do |f|
-  - if @gladiator.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@gladiator.errors.count, "error")} prohibited this gladiator from being saved:"
-      %ul
-        - @gladiator.errors.full_messages.each do |message|
-          %li= message
+.d-flex.justify-content-center
+  .card.card-standard-width
+    = form_for @gladiator do |f|
+      - if @gladiator.errors.any?
+        #error_explanation
+          %span= "#{pluralize(@gladiator.errors.count, "error")} prohibited this gladiator from being saved:"
+          %ul
+            - @gladiator.errors.full_messages.each do |message|
+              %li= message
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :life_points
-    = f.number_field :life_points
-  .field
-    = f.label :attack_points
-    = f.number_field :attack_points
-  .field
-    = f.label :magic_points
-    = f.number_field :magic_points
-  .field
-    = f.label :age
-    = f.number_field :age
-  .field
-    = f.label :avatar
-    = f.file_field :avatar
-  .actions
-    = f.submit 'Save'
+      = image_tag f.object.avatar_path_wrapper, class: 'card-img-top'
+      .card-body
+        .row
+          .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold.my-1
+            = f.label :name, 'Name:', class: 'form-label'
+          .col-12.col-md-6.d-flex.justify-content-start.my-1
+            = f.text_field :name, class: 'form-control', required: true
+          .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold.my-1
+            = f.label :life_points, 'Life points:', class: 'form-label'
+          .col-12.col-md-6.d-flex.justify-content-start.my-1
+            = f.number_field :life_points, class: 'form-control', min: 0, max: 100, step: 1, required: true
+          .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold.my-1
+            = f.label :attack_points, 'Attack points:', class: 'form-label'
+          .col-12.col-md-6.d-flex.justify-content-start.my-1
+            = f.number_field :attack_points, class: 'form-control', min: 0, max: 100, step: 1, required: true
+          .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold.my-1
+            = f.label :magic_points, 'Magic points:', class: 'form-label'
+          .col-12.col-md-6.d-flex.justify-content-start.my-1
+            = f.number_field :magic_points, class: 'form-control', min: 0, max: 100, step: 1, required: true
+          .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold.my-1
+            = f.label :health_status, 'Health status:', class: 'form-label'
+          .col-12.col-md-6.d-flex.justify-content-start.my-1
+            = f.select :health_status, Gladiator.health_status_human_wrapper, { required: true }, { class: 'form-control'}
+          .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold.my-1
+            = f.label :age, 'Age:', class: 'form-label'
+          .col-12.col-md-6.d-flex.justify-content-start.my-1
+            = f.number_field :age, class: 'form-control', min: 0, step: 1, required: true
+
+        .my-3.d-flex.justify-content-center
+          = f.submit 'Save', class: 'btn btn-primary'
+
+
