@@ -10,5 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_11_114301) do
+  create_table "gladiators", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "life_points", default: 100, null: false
+    t.integer "attack_points", default: 50, null: false
+    t.integer "magic_points", default: 0, null: false
+    t.integer "health_status", default: 0, null: false
+    t.integer "age", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end
