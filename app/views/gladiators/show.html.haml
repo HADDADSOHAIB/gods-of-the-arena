@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @gladiator.name
+%p
+  %b Life points:
+  = @gladiator.life_points
+%p
+  %b Attack points:
+  = @gladiator.attack_points
+%p
+  %b Magic points:
+  = @gladiator.magic_points
+%p
+  %b Health status:
+  = @gladiator.health_status
+%p
+  %b Age:
+  = @gladiator.age
+
+= link_to 'Edit', edit_gladiator_path(@gladiator)
+\|
+= link_to 'Back', gladiators_path
