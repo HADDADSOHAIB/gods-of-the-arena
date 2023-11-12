@@ -6,7 +6,7 @@
 %h1.text-center.mt-3 Here you find all the battle, all the blood, all for glory
 
 - @fights.each do |fight|
-  = render partial: 'fight_panel', locals: { fight: fight }
+  = render partial: 'fight_panel', locals: { fight: fight, show_avatar: true }
 
 
 

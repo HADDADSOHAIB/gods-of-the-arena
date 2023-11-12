@@ -6,7 +6,7 @@
 .d-flex.justify-content-center.flex-column.flex-md-row
   -  fight.gladiators.each do |gladiator|
     .mx-2.my-4
-      = render partial: 'gladiators/presentation_panel', locals: { gladiator:, show_actions: false }
+      = render partial: 'gladiators/presentation_panel', locals: { gladiator:, show_actions: false, show_avatar: show_avatar }
 
   .d-flex.flex-column.align-items-center.justify-content-center
     .fst-italic.fs-3 Fight summary
