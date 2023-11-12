@@ -1,0 +1,13 @@
+.card.card-standard-width.container-fluid
+  .card-body
+    .row
+      - tool_list_by_gladiators.each do |gladiator, tools|
+        .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold
+          Tools used by 
+          = gladiator.name 
+          \:
+        .col-12.col-md-6.d-flex.justify-content-start
+          - if tools.any?
+            = tools.map(&:name).join(', ')
+          - else
+            No tool used

@@ -29,7 +29,9 @@ class FightsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @tool_list_by_gladiators = Fights::ToolListByGladiator.new(fight: @fight).call
+  end
 
   def execute
     execute_service = Fights::Execute.new(fight: @fight)

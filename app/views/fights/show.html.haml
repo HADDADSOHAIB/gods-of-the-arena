@@ -24,5 +24,6 @@
 .text-center.fst-italic
   %h2 Fight details
 
-.d-flex.justify-content-center.mb-5
+.d-flex.justify-content-center.flex-column.mb-5
   = render partial: 'fight_details', locals: { fight: @fight, show_actions: true }
+  = render partial: 'fight_tools', locals: { tool_list_by_gladiators: @tool_list_by_gladiators }
