@@ -1,4 +1,6 @@
 class Fight < ApplicationRecord
+ #==== Attributes ====
+ enum status: { planned: 0, in_progress: 1, ended: 2}, _prefix: true
 
   #==== Associations ====
   has_many :gladiator_fights, dependent: :nullify
@@ -9,4 +11,9 @@ class Fight < ApplicationRecord
 
   has_many :lost_gladiator_fights, ->{ lost }, class_name: 'GladiatorFight', dependent: :nullify
   has_many :lost_gladiators, through: :lost_gladiator_gladiators, source: :gladiator
+
+  #==== Instance methods ====
+  def status_human
+    I18n.t("fights.attributes.status.#{status}")
+  end
 end

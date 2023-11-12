@@ -37,5 +37,11 @@ en:
         ready_for_fight: Ready for the fight
         recovering_from_fight: Still recovering from the last fight
         dead: Dead
+  fights:
+    attributes:
+      status:
+        planned: Fight planned
+        in_progress: Fight in progress
+        ended: Fight ended
 
       
