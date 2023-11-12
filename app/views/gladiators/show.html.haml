@@ -5,35 +5,4 @@
 
 
 .d-flex.justify-content-center
-  .card.card-standard-width.container-fluid
-    = image_tag @gladiator.avatar_path_wrapper, class: 'card-img-top'
-    .card-body
-      .row
-        .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold
-          Name:
-        .col-12.col-md-6.d-flex.justify-content-start
-          = @gladiator.name
-        .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold
-          Life points:
-        .col-12.col-md-6.d-flex.justify-content-start
-          = @gladiator.life_points
-        .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold
-          Attack points:
-        .col-12.col-md-6.d-flex.justify-content-start
-          = @gladiator.attack_points
-        .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold
-          Magic points:
-        .col-12.col-md-6.d-flex.justify-content-start
-          = @gladiator.magic_points
-        .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold
-          Health status:
-        .col-12.col-md-6.d-flex.justify-content-start
-          = @gladiator.health_status_human
-        .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold
-          Age:
-        .col-12.col-md-6.d-flex.justify-content-start
-          = @gladiator.age
-      .my-3.d-flex.justify-content-center
-        = link_to 'Edit', edit_gladiator_path(@gladiator), class: 'btn btn-primary mx-1'
-        = link_to 'Remove', gladiator_path(@gladiator), method: :delete, data: { confirm: 'Are you sure ?'}, class: 'btn btn-danger mx-1'
-        = link_to 'Back', gladiators_path, class: 'btn btn-secondary mx-1'
+  = render partial: 'presentation_panel', locals: { gladiator: @gladiator, show_actions: true }
