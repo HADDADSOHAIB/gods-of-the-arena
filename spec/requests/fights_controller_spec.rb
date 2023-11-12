@@ -55,7 +55,7 @@ describe FightsController, type: :request do
   end
 
   describe 'POST Create' do
-    context 'With valid argument' do
+    context 'with valid argument' do
       it 'redirect successfully' do
         first_gladiator = create(:gladiator, age: 10)
         second_gladiator = create(:gladiator, age: 15)
@@ -69,7 +69,7 @@ describe FightsController, type: :request do
       end
     end
 
-    context 'With no valid argument' do
+    context 'with no valid argument' do
       it 'renders successfully' do
         first_gladiator = create(:gladiator, age: 10)
 
@@ -87,7 +87,7 @@ describe FightsController, type: :request do
   describe 'GET execute' do
     it 'call fight service' do
       fight = create(:fight)
-      expect_any_instance_of(Fights::Execute).to receive(:call)
+      expect_any_instance_of(Fights::Execute).to receive(:call) # rubocop:disable RSpec/AnyInstance
 
       get execute_fight_url(fight)
     end

@@ -80,7 +80,7 @@ describe GladiatorsController, type: :request do
   end
 
   describe 'PATCH update' do
-    context 'With valid argument' do
+    context 'with valid argument' do
       it 'redirect successfully' do
         gladiator = create(:gladiator, age: 10)
         patch gladiator_url(gladiator), params: { gladiator: build(:gladiator).attributes.merge({ 'age' => 5 }) }
@@ -90,7 +90,7 @@ describe GladiatorsController, type: :request do
       end
     end
 
-    context 'With no valid argument' do
+    context 'with no valid argument' do
       it 'renders successfully' do
         gladiator = create(:gladiator, age: 10)
         patch gladiator_url(gladiator), params: { gladiator: build(:gladiator).attributes.merge({ 'age' => -10 }) }

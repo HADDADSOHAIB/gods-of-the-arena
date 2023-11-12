@@ -14,17 +14,17 @@ RSpec.describe Fights::Execute, type: :service do
 
   describe '#call' do
     it 'call ChooseWinner service' do
-      expect_any_instance_of(Fights::ChooseWinner).to receive(:call)
-      subject.call
+      expect_any_instance_of(Fights::ChooseWinner).to receive(:call) # rubocop:disable RSpec/AnyInstance
+      service.call
     end
 
     it 'call Finalize service' do
-      expect_any_instance_of(Fights::Finalize).to receive(:call)
-      subject.call
+      expect_any_instance_of(Fights::Finalize).to receive(:call) # rubocop:disable RSpec/AnyInstance
+      service.call
     end
 
     it 'change fight status to ended' do
-      subject.call
+      service.call
       expect(fight.status).to eq('ended')
     end
   end
