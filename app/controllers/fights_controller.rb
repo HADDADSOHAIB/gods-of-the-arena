@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class FightsController < ApplicationController
-  before_action :set_fight, only: %i[show destroy execute]
+  before_action :set_fight, only: %i[show execute]
 
   def index
     @fights = Fight.all.order(id: :desc)

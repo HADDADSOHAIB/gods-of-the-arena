@@ -10,14 +10,14 @@ describe GladiatorsController, type: :request do
   end
 
   describe 'GET index' do
-    context 'With no gladiators in the database' do
+    context 'with no gladiators in the database' do
       it 'renders successfully' do
         get gladiators_url
         expect(response).to be_successful
       end
     end
 
-    context 'With  gladiators in the database' do
+    context 'with  gladiators in the database' do
       it 'renders successfully' do
         create_list(:gladiator, 2)
         get gladiators_url
@@ -27,7 +27,7 @@ describe GladiatorsController, type: :request do
   end
 
   describe 'GET show' do
-    context 'With no fights in the database' do
+    context 'with no fights in the database' do
       it 'renders successfully' do
         gladiator = create(:gladiator)
         get gladiator_url(gladiator)
@@ -35,7 +35,7 @@ describe GladiatorsController, type: :request do
       end
     end
 
-    context 'With fights in the database' do
+    context 'with fights in the database' do
       it 'renders successfully' do
         gladiator = create(:gladiator, :with_won_fights, :with_lost_fights, :with_planned_fights)
         get gladiator_url(gladiator)
@@ -60,7 +60,7 @@ describe GladiatorsController, type: :request do
   end
 
   describe 'POST create' do
-    context 'With valid argument' do
+    context 'with valid argument' do
       it 'redirect successfully' do
         expect do
           post gladiators_url, params: { gladiator: build(:gladiator).attributes }
@@ -69,7 +69,7 @@ describe GladiatorsController, type: :request do
       end
     end
 
-    context 'With no valid argument' do
+    context 'with no valid argument' do
       it 'renders successfully' do
         expect do
           post gladiators_url, params: { gladiator: build(:gladiator, age: -10).attributes }
