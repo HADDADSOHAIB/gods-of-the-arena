@@ -20,7 +20,7 @@ module Fights
 
     private
 
-    def handle_winner(the_winner)
+    def handle_winner(the_winner:)
       the_winner.update!(life_points: the_winner.life_points / 2,
                          experience_points: the_winner.experience_points + GAINED_EXPERIENCE_POINTS.sample)
       the_winner_gladiator_fight = the_winner.gladiator_fights.find_by(fight: fight)
