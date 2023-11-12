@@ -26,6 +26,10 @@
         Age:
       .col-12.col-md-6.d-flex.justify-content-start
         = gladiator.age
+      .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold
+        Experience points:
+      .col-12.col-md-6.d-flex.justify-content-start
+        = gladiator.experience_points
     - if show_actions
       .my-3.d-flex.justify-content-center
         = link_to 'Edit', edit_gladiator_path(gladiator), class: 'btn btn-primary mx-1'

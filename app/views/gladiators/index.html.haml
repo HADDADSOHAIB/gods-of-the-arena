@@ -12,24 +12,24 @@
 %table.table.mt-2.mb-5.table-hover.table-responsive
   %thead.table-primary
     %tr
-      %th.px-md-4.py-md-3{scope: 'col'} Id
       %th.px-md-4.py-md-3{scope: 'col'} Name
       %th.px-md-4.py-md-3{scope: 'col'} Life points
       %th.px-md-4.py-md-3{scope: 'col'} Attack points
       %th.px-md-4.py-md-3{scope: 'col'} Magic points
       %th.px-md-4.py-md-3{scope: 'col'} Health status
       %th.px-md-4.py-md-3{scope: 'col'} Age
+      %th.px-md-4.py-md-3{scope: 'col'} Experience
       %th.px-md-4.py-md-3{scope: 'col'}
 
   %tbody
     - @gladiators.each do |gladiator|
       %tr
-        %td.px-md-4.py-md-3{scope: 'row'}= gladiator.id
         %td.px-md-4.py-md-3= gladiator.name
         %td.px-md-4.py-md-3= gladiator.life_points
         %td.px-md-4.py-md-3= gladiator.attack_points
         %td.px-md-4.py-md-3= gladiator.magic_points
         %td.px-md-4.py-md-3= gladiator.health_status_human
         %td.px-md-4.py-md-3= gladiator.age
+        %td.px-md-4.py-md-3= gladiator.experience_points
         %td.px-md-4.py-md-3.text-end
           = link_to 'Details', gladiator, class: 'btn btn-primary'

@@ -6,9 +6,9 @@ class Gladiator < ApplicationRecord
   has_one_attached :avatar
 
   #==== Validations ====
-  validates :name, :life_points, :attack_points, :magic_points, :health_status, :age, presence: :true
+  validates :name, :life_points, :attack_points, :magic_points, :health_status, :age, :experience_points, presence: :true
   validates :life_points, :attack_points, :magic_points, inclusion: { in: (0..100), message: 'should be between 0 and 100' }
-  validates :age, inclusion: { in: (0...), message: 'should be greater than 0' }
+  validates :age, :experience_points, inclusion: { in: (0...), message: 'should be greater than 0' }
 
   #==== Associations ====
   has_many :gladiator_fights, dependent: :nullify
