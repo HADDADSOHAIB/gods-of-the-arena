@@ -16,13 +16,17 @@ class Gladiator < ApplicationRecord
   has_many :gladiator_fights, dependent: :nullify
   has_many :fights, through: :gladiator_fights
 
-  has_many :won_gladiator_fights, -> { won }, class_name: 'GladiatorFight', dependent: :nullify
+  has_many :won_gladiator_fights, -> { won }, class_name: 'GladiatorFight', dependent: :nullify, inverse_of: :gladiator
   has_many :won_fights, through: :won_gladiator_fights, source: :fight
 
-  has_many :lost_gladiator_fights, -> { lost }, class_name: 'GladiatorFight', dependent: :nullify
+  has_many :lost_gladiator_fights, lambda {
+                                     lost
+                                   }, class_name: 'GladiatorFight', dependent: :nullify, inverse_of: :gladiator
   has_many :lost_fights, through: :lost_gladiator_fights, source: :fight
 
-  has_many :planned_gladiator_fights, -> { planned }, class_name: 'GladiatorFight', dependent: :nullify
+  has_many :planned_gladiator_fights, lambda {
+                                        planned
+                                      }, class_name: 'GladiatorFight', dependent: :nullify, inverse_of: :gladiator
   has_many :planned_fights, through: :planned_gladiator_fights, source: :fight
 
   #==== Scopes ====
