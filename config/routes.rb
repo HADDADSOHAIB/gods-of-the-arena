@@ -8,7 +8,11 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :fights, except: [:update, :edit]
+  resources :fights, except: [:update, :edit] do
+    member do
+      get :execute
+    end
+  end
 
   root 'pages#index'
 end

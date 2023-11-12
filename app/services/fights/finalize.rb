@@ -1,11 +1,12 @@
 module Fights
   class Finalize
     AFTER_FIGHT_STATUS = ['recovering_from_fight', 'dead'].freeze
-    attr_reader :the_winner, :the_loosers
+    attr_reader :the_winner, :the_loosers, :fight
 
     def initialize(fight:, the_winner:, the_loosers:)
       @the_winner = the_winner
       @the_loosers = the_loosers
+      @fight = fight
     end
 
     def call
@@ -17,7 +18,7 @@ module Fights
 
       the_loosers.each do |the_looser|
         the_looser.update!(life_points: 0, health_status: AFTER_FIGHT_STATUS.sample)
-        the_looser_gladiator_fight = the_winner.gladiator_fights.find_by(fight:)
+        the_looser_gladiator_fight = the_looser.gladiator_fights.find_by(fight:)
         raise "There is non record of this gladiator #{the_looser.name} in this fight" unless the_looser_gladiator_fight
 
         the_looser_gladiator_fight.update!(battle_won: false)

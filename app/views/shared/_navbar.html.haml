@@ -5,3 +5,5 @@
         %a.nav-link{href: root_path, class: request.path == '/' && 'active' } The Arena
       %li.nav-item.mx-4
         %a.nav-link{href: the_ludus_gladiators_path, class: request.path.include?('gladiators') && 'active' } The ludus 
+      %li.nav-item.mx-4
+        %a.nav-link{href: fights_path, class: request.path.include?('fights') && 'active' } The fights

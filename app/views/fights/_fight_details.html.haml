@@ -1,0 +1,19 @@
+.card.card-standard-width.container-fluid
+  .card-body
+    .row
+      .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold
+        Battle status:
+      .col-12.col-md-6.d-flex.justify-content-start
+        = fight.status_human
+      .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold
+        The winners:
+      .col-12.col-md-6.d-flex.justify-content-start
+        = fight.won_gladiators.map(&:name).join(', ')
+      .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold
+        The loosers:
+      .col-12.col-md-6.d-flex.justify-content-start
+        = fight.lost_gladiators.map(&:name).join(', ')
+    - if fight.status_planned? && show_actions  
+      .my-3.d-flex.justify-content-center
+        = link_to 'Execute the fight', execute_fight_path(fight), class: 'btn btn-danger'
+
