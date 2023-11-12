@@ -1,4 +1,9 @@
-%h1.text-center Here you find all the battle, all the blood, all for glory
+.mt-5.d-flex.justify-content-end
+  = link_to 'Gladiators list', gladiators_path, class: 'btn btn-primary btn-lg'
+  = link_to 'Recrute a gladiator', new_gladiator_path, class: 'btn btn-outline-primary ms-2 btn-lg'
+  = link_to 'Start a fight', new_fight_path, class: 'btn btn-danger ms-2 btn-lg'
+
+%h1.text-center.mt-3 Here you find all the battle, all the blood, all for glory
 
 - @fights.each do |fight|
   = render partial: 'fight_panel', locals: { fight: fight }

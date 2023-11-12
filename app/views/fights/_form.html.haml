@@ -1,5 +1,5 @@
 .d-flex.justify-content-center
-  .card.card-standard-width.container-fluid
+  .card.card-big-width.container-fluid
     = form_for @fight_form, url: fights_path do |f|
       - if @fight_form.errors.any?
         #error_explanation
@@ -16,9 +16,19 @@
             = f.select :first_gladiator_id, gladiators.map{[_1.name, _1.id]}, { required: true }, { class: 'form-control'}
 
           .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold.my-1
+            = f.label :first_gladiator_tool_ids, 'The first gladiator tools:', class: 'form-label'
+          .col-12.col-md-6.d-flex.justify-content-start.my-1
+            = f.collection_select :first_gladiator_tool_ids, @tools, :id, :name, { prompt: "Select the gladiator weapons and shields", include_blank: true }, { class: 'form-control', multiple: true}
+
+          .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold.my-1
             = f.label :second_gladiator_id, 'The second gladiator:', class: 'form-label'
           .col-12.col-md-6.d-flex.justify-content-start.my-1
             = f.select :second_gladiator_id, gladiators.map{[_1.name, _1.id]}, { required: true }, { class: 'form-control'}
+
+          .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold.my-1
+            = f.label :second_gladiator_tool_ids, 'The first gladiator tools:', class: 'form-label'
+          .col-12.col-md-6.d-flex.justify-content-start.my-1
+            = f.collection_select :second_gladiator_tool_ids, @tools, :id, :name, { prompt: "Select the gladiator weapons and shields", include_blank: true }, { class: 'form-control', multiple: true}
 
         .my-2.text-center.fs-5
           Only gladiators with a status ready to fight and with life points can take part in fight

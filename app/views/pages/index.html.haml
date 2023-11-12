@@ -1,7 +1,9 @@
-.d-flex.justify-content-end
+.mt-5.d-flex.justify-content-end
+  = link_to 'Gladiators list', gladiators_path, class: 'btn btn-primary btn-lg'
+  = link_to 'Recrute a gladiator', new_gladiator_path, class: 'btn btn-outline-primary ms-2 btn-lg'
   = link_to 'Start a fight', new_fight_path, class: 'btn btn-danger ms-2 btn-lg'
 
-%h1.text-center.fst-italic To be a gladiator is to be one with death
+%h1.text-center.fst-italic.mt-3 To be a gladiator is to be one with death
 = image_tag "arena-1.png", class: 'img-fluid mt-5 rounded-4', alt: 'The arena, gladiators fighting'
 %h2.text-center.fst-italic.mt-5 For them, there can be one path to take, a path of blood and violence, these men start life as a slave without nothing and grow into legends
 .mt-5.row

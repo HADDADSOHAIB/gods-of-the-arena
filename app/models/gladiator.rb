@@ -29,6 +29,8 @@ class Gladiator < ApplicationRecord
                                       }, class_name: 'GladiatorFight', dependent: :nullify, inverse_of: :gladiator
   has_many :planned_fights, through: :planned_gladiator_fights, source: :fight
 
+  has_many :tool_gladiator_fights, dependent: :nullify
+
   #==== Scopes ====
   scope :has_life_points, -> { where.not(life_points: 0) }
 

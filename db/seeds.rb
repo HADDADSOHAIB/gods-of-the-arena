@@ -5,7 +5,7 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# #   Character.create(name: 'Luke', movie: movies.first)
 
 Gladiator.create([
                    {
@@ -36,3 +36,33 @@ Gladiator.create([
                      experience_points: 29
                    }
                  ])
+
+Tool.create(
+  name: 'The sword of the gods',
+  toolable: Weapon.create(attack_points: 50)
+)
+
+Tool.create(
+  name: 'The hammer of the eden',
+  toolable: Weapon.create(attack_points: 100)
+)
+
+Tool.create(
+  name: 'The arrow of the Odin',
+  toolable: Weapon.create(attack_points: 70)
+)
+
+Tool.create(
+  name: 'The shield of the athen',
+  toolable: Shield.create(protection_points: 50)
+)
+
+Tool.create(
+  name: 'The cloack of invibilty',
+  toolable: Shield.create(protection_points: 100)
+)
+
+Tool.create(
+  name: 'The shield of the truth',
+  toolable: Shield.create(protection_points: 70)
+)

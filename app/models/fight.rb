@@ -13,6 +13,7 @@ class Fight < ApplicationRecord
   has_many :lost_gladiator_fights, -> { lost }, class_name: 'GladiatorFight', dependent: :nullify, inverse_of: :fight
   has_many :lost_gladiators, through: :lost_gladiator_fights, source: :gladiator
 
+  has_many :tool_gladiator_fights, dependent: :nullify
   #==== Instance methods ====
   def status_human
     I18n.t("fights.attributes.status.#{status}")

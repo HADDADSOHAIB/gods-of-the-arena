@@ -8,6 +8,7 @@ class FightsController < ApplicationController
 
   def new
     @gladiators = Gladiator.health_status_ready_for_fight.has_life_points
+    @tools = Tool.all
     if @gladiators.empty?
       return redirect_to gladiators_path,
                          alert: 'There is no gladiators ready to fight with life points to start a fight'
@@ -22,6 +23,7 @@ class FightsController < ApplicationController
     if @fight_form.save
       redirect_to fight_url(@fight_form.fight), notice: 'The fight was successfully created.'
     else
+      @tools = Tool.all
       @gladiators = Gladiator.health_status_ready_for_fight.has_life_points
       render :new
     end
@@ -46,6 +48,7 @@ class FightsController < ApplicationController
   end
 
   def fight_params
-    params.require(:fight_form).permit(:first_gladiator_id, :second_gladiator_id)
+    params.require(:fight_form).permit(:first_gladiator_id, :second_gladiator_id, first_gladiator_tool_ids: [],
+                                                                                  second_gladiator_tool_ids: [])
   end
 end

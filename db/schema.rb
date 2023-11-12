@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_12_124015) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_12_181020) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -69,8 +69,44 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_12_124015) do
     t.integer "experience_points", default: 0, null: false
   end
 
+  create_table "shields", force: :cascade do |t|
+    t.integer "protection_points", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tool_gladiator_fights", force: :cascade do |t|
+    t.integer "tool_id", null: false
+    t.integer "gladiator_id", null: false
+    t.integer "fight_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fight_id"], name: "index_tool_gladiator_fights_on_fight_id"
+    t.index ["gladiator_id", "fight_id", "tool_id"], name: "index_t_g_fs_on_g_id_and_f_id_and_t_id", unique: true
+    t.index ["gladiator_id"], name: "index_tool_gladiator_fights_on_gladiator_id"
+    t.index ["tool_id"], name: "index_tool_gladiator_fights_on_tool_id"
+  end
+
+  create_table "tools", force: :cascade do |t|
+    t.string "name"
+    t.string "toolable_type"
+    t.integer "toolable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["toolable_type", "toolable_id"], name: "index_tools_on_toolable"
+  end
+
+  create_table "weapons", force: :cascade do |t|
+    t.integer "attack_points", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "gladiator_fights", "fights", on_delete: :nullify
   add_foreign_key "gladiator_fights", "gladiators", on_delete: :nullify
+  add_foreign_key "tool_gladiator_fights", "fights", on_delete: :nullify
+  add_foreign_key "tool_gladiator_fights", "gladiators", on_delete: :nullify
+  add_foreign_key "tool_gladiator_fights", "tools", on_delete: :nullify
 end
