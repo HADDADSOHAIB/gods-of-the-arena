@@ -6,6 +6,9 @@ class FightsController < ApplicationController
   end
 
   def new
+    @gladiators = Gladiator.health_status_ready_for_fight.has_life_points
+    return redirect_to gladiators_path, alert: 'There is no gladiators ready to fight with life points to start a fight' if @gladiators.empty?
+
     @fight_form = FightForm.new
   end
 
@@ -15,6 +18,7 @@ class FightsController < ApplicationController
     if @fight_form.save
       redirect_to fight_url(@fight_form.fight), notice: "The fight was successfully created."
     else
+      @gladiators = Gladiator.health_status_ready_for_fight.has_life_points
       render :new
     end
   end

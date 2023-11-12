@@ -20,6 +20,9 @@ class Gladiator < ApplicationRecord
   has_many :lost_gladiator_fights, ->{ lost }, class_name: 'GladiatorFight', dependent: :nullify
   has_many :lost_fights, through: :lost_gladiator_fights, source: :fight
 
+  #==== Scopes ====
+  scope :has_life_points, ->{ where.not(life_points: 0) }
+
   #==== Instance methods ====
   def health_status_human
     I18n.t("gladiators.attributes.health_status.#{health_status}")

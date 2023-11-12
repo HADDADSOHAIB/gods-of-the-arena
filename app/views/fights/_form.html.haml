@@ -13,13 +13,15 @@
           .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold.my-1
             = f.label :first_gladiator_id, 'The first gladiator:', class: 'form-label'
           .col-12.col-md-6.d-flex.justify-content-start.my-1
-            = f.select :first_gladiator_id, Gladiator.health_status_ready_for_fight.map{[_1.name, _1.id]}, { required: true }, { class: 'form-control'}
+            = f.select :first_gladiator_id, gladiators.map{[_1.name, _1.id]}, { required: true }, { class: 'form-control'}
 
           .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold.my-1
             = f.label :second_gladiator_id, 'The second gladiator:', class: 'form-label'
           .col-12.col-md-6.d-flex.justify-content-start.my-1
-            = f.select :second_gladiator_id, Gladiator.health_status_ready_for_fight.map{[_1.name, _1.id]}, { required: true }, { class: 'form-control'}
+            = f.select :second_gladiator_id, gladiators.map{[_1.name, _1.id]}, { required: true }, { class: 'form-control'}
 
+        .my-2.text-center.fs-5
+          Only gladiators with a status ready to fight and with life points can take part in fight
         .my-3.d-flex.justify-content-center
           = f.submit 'Start the fight', class: 'btn btn-danger'
           = link_to 'Back to the arena', root_path, class: 'btn btn-secondary ms-2'

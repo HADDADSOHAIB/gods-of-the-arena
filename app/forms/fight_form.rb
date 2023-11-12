@@ -7,6 +7,7 @@ class FightForm
   validate :gladiators_are_different
   validate :check_ids_on_database
   validate :gladiators_in_good_health
+  validate :gladiators_has_life_point
 
   def initialize(first_gladiator_id: nil, second_gladiator_id: nil)
     @first_gladiator_id = first_gladiator_id
@@ -25,6 +26,11 @@ class FightForm
   def gladiators_in_good_health
     errors.add(:base, "Gladiator #{first_gladiator.name} is not in a good health status for a fight") unless first_gladiator.health_status_ready_for_fight?
     errors.add(:base, "Gladiator #{second_gladiator.name} is not in a good health status for a fight") unless second_gladiator.health_status_ready_for_fight?
+  end
+
+  def gladiators_has_life_point
+    errors.add(:base, "Gladiator #{first_gladiator.name} does not have life point to take part in the fight") if first_gladiator.life_points == 0
+    errors.add(:base, "Gladiator #{second_gladiator.name} does not have life point to take part in the fight") if second_gladiator.life_points == 0
   end
 
   def save!

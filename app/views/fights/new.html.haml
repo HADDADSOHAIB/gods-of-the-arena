@@ -2,4 +2,4 @@
   %h1 To start the fight, choose the gladiators, set them for the glory of Rome
 
 .my-4
-  = render 'form'
+  = render partial: 'form', locals: { gladiators: @gladiators }
