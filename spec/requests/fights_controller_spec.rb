@@ -56,14 +56,15 @@ describe FightsController, type: :request do
 
   describe 'POST Create' do
     context 'With valid argument' do
-      it 'redirect successfully' do 
+      it 'redirect successfully' do
         first_gladiator = create(:gladiator, age: 10)
         second_gladiator = create(:gladiator, age: 15)
         expect do
-          post fights_url, params: { fight_form: { first_gladiator_id: first_gladiator.id, second_gladiator_id: second_gladiator.id }}
-        end.to change { Fight.count }.by 1
-        
-        
+          post fights_url,
+               params: { fight_form: { first_gladiator_id: first_gladiator.id,
+                                       second_gladiator_id: second_gladiator.id } }
+        end.to change(Fight, :count).by 1
+
         expect(response).to have_http_status(:redirect)
       end
     end
@@ -73,16 +74,18 @@ describe FightsController, type: :request do
         first_gladiator = create(:gladiator, age: 10)
 
         expect do
-          post fights_url, params: { fight_form: { first_gladiator_id: first_gladiator.id, second_gladiator_id: first_gladiator.id }}
-        end.to change { Fight.count }.by 0
-        
+          post fights_url,
+               params: { fight_form: { first_gladiator_id: first_gladiator.id,
+                                       second_gladiator_id: first_gladiator.id } }
+        end.to change(Fight, :count).by 0
+
         expect(response).to be_successful
       end
     end
   end
 
   describe 'GET execute' do
-    it 'call fight service' do 
+    it 'call fight service' do
       fight = create(:fight)
       expect_any_instance_of(Fights::Execute).to receive(:call)
 

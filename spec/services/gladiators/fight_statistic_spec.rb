@@ -1,10 +1,11 @@
+# frozen_string_literal: true
 RSpec.describe Gladiators::FightStatistic, type: :service do
-  let!(:gladiator){ create(:gladiator) }
-  let!(:won_gladiator_fight){ create(:gladiator_fight, gladiator: gladiator, battle_won: true) }
-  let!(:lost_gladiator_fight){ create(:gladiator_fight, gladiator: gladiator, battle_won: false) }
-  let!(:planned_gladiator_fight){ create(:gladiator_fight, gladiator: gladiator, battle_won: nil) }
-
   subject { described_class.new(gladiator: gladiator) }
+
+  let!(:gladiator) { create(:gladiator) }
+  let!(:won_gladiator_fight) { create(:gladiator_fight, gladiator: gladiator, battle_won: true) }
+  let!(:lost_gladiator_fight) { create(:gladiator_fight, gladiator: gladiator, battle_won: false) }
+  let!(:planned_gladiator_fight) { create(:gladiator_fight, gladiator: gladiator, battle_won: nil) }
 
   describe '#number_of_fights' do
     it 'return number_of_fights' do

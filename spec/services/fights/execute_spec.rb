@@ -1,11 +1,16 @@
+# frozen_string_literal: true
 RSpec.describe Fights::Execute, type: :service do
-  let!(:first_gladiator){ create(:gladiator) }
-  let!(:second_gladiator){ create(:gladiator) }
-  let!(:fight){ create(:fight) }
-  let!(:the_winner_gladiator_fight){ create(:gladiator_fight, gladiator: first_gladiator, fight: fight, battle_won: nil) }
-  let!(:the_looser_gladiator_fight){ create(:gladiator_fight, gladiator: second_gladiator, fight: fight, battle_won: nil) }
-
   subject(:service) { described_class.new(fight: fight) }
+
+  let!(:first_gladiator) { create(:gladiator) }
+  let!(:second_gladiator) { create(:gladiator) }
+  let!(:fight) { create(:fight) }
+  let!(:the_winner_gladiator_fight) do
+    create(:gladiator_fight, gladiator: first_gladiator, fight: fight, battle_won: nil)
+  end
+  let!(:the_looser_gladiator_fight) do
+    create(:gladiator_fight, gladiator: second_gladiator, fight: fight, battle_won: nil)
+  end
 
   describe '#call' do
     it 'call ChooseWinner service' do

@@ -8,7 +8,7 @@ describe GladiatorsController, type: :request do
       expect(response).to be_successful
     end
   end
-  
+
   describe 'GET index' do
     context 'With no gladiators in the database' do
       it 'renders successfully' do
@@ -62,14 +62,18 @@ describe GladiatorsController, type: :request do
   describe 'POST create' do
     context 'With valid argument' do
       it 'redirect successfully' do
-        expect{ post gladiators_url, params: { gladiator: build(:gladiator).attributes} }.to change { Gladiator.count }.by 1
+        expect do
+          post gladiators_url, params: { gladiator: build(:gladiator).attributes }
+        end.to change(Gladiator, :count).by 1
         expect(response).to have_http_status(:redirect)
       end
     end
 
     context 'With no valid argument' do
       it 'renders successfully' do
-        expect{ post gladiators_url, params: { gladiator: build(:gladiator, age: -10).attributes} }.to change { Gladiator.count }.by 0
+        expect do
+          post gladiators_url, params: { gladiator: build(:gladiator, age: -10).attributes }
+        end.to change(Gladiator, :count).by 0
         expect(response).to be_successful
       end
     end
@@ -79,8 +83,8 @@ describe GladiatorsController, type: :request do
     context 'With valid argument' do
       it 'redirect successfully' do
         gladiator = create(:gladiator, age: 10)
-        patch gladiator_url(gladiator), params: { gladiator: build(:gladiator).attributes.merge({ 'age' => 5 })}
-        
+        patch gladiator_url(gladiator), params: { gladiator: build(:gladiator).attributes.merge({ 'age' => 5 }) }
+
         expect(gladiator.reload.age).to eq(5)
         expect(response).to have_http_status(:redirect)
       end
@@ -89,8 +93,8 @@ describe GladiatorsController, type: :request do
     context 'With no valid argument' do
       it 'renders successfully' do
         gladiator = create(:gladiator, age: 10)
-        patch gladiator_url(gladiator), params: { gladiator: build(:gladiator).attributes.merge({ 'age' => -10 })}
-        
+        patch gladiator_url(gladiator), params: { gladiator: build(:gladiator).attributes.merge({ 'age' => -10 }) }
+
         expect(gladiator.reload.age).to eq(10)
         expect(response).to be_successful
       end
@@ -100,7 +104,7 @@ describe GladiatorsController, type: :request do
   describe 'DELETE destroy' do
     it 'redirect successfully' do
       gladiator = create(:gladiator)
-      expect{ delete gladiator_url(gladiator) }.to change { Gladiator.count }.by -1
+      expect { delete gladiator_url(gladiator) }.to change(Gladiator, :count).by(-1)
       expect(response).to have_http_status(:redirect)
     end
   end

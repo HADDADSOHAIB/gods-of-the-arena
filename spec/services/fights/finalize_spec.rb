@@ -1,11 +1,12 @@
+# frozen_string_literal: true
 RSpec.describe Fights::Finalize, type: :service do
-  let!(:the_winner){ create(:gladiator, life_points: 100, experience_points: 40) }
-  let!(:the_looser){ create(:gladiator) }
-  let!(:fight){ create(:fight) }
-  let!(:the_winner_gladiator_fight){ create(:gladiator_fight, gladiator: the_winner, fight: fight, battle_won: nil) }
-  let!(:the_looser_gladiator_fight){ create(:gladiator_fight, gladiator: the_looser, fight: fight, battle_won: nil) }
-
   subject(:service) { described_class.new(fight: fight, the_winner: the_winner, the_loosers: [the_looser]) }
+
+  let!(:the_winner) { create(:gladiator, life_points: 100, experience_points: 40) }
+  let!(:the_looser) { create(:gladiator) }
+  let!(:fight) { create(:fight) }
+  let!(:the_winner_gladiator_fight) { create(:gladiator_fight, gladiator: the_winner, fight: fight, battle_won: nil) }
+  let!(:the_looser_gladiator_fight) { create(:gladiator_fight, gladiator: the_looser, fight: fight, battle_won: nil) }
 
   describe '#call' do
     it 'Set the_winner_gladiator_fight battle won to true' do
