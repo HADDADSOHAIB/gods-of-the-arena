@@ -1,0 +1,16 @@
+.text-center.fst-italic
+  %h3.mt-3.mt-md-0
+    The fight between 
+    = fight.gladiators.map(&:name).join(', ')
+
+.d-flex.justify-content-center.flex-column.flex-md-row
+  -  fight.gladiators.each do |gladiator|
+    .mx-2.my-4
+      = render partial: 'gladiators/presentation_panel', locals: { gladiator:, show_actions: false }
+
+  .d-flex.flex-column.align-items-center.justify-content-center
+    .fst-italic.fs-3 Fight summary
+    = render partial: 'fights/fight_details', locals: { fight: fight, show_actions: false }
+    .mt-3.d-flex.justify-content-center.flex-md-row.flex-column
+      = link_to 'Execute the fight', execute_fight_path(fight), class: 'btn btn-danger m-1' if fight.status_planned?
+      = link_to 'Fight details', fight_path(fight), class: 'btn btn-primary m-1'

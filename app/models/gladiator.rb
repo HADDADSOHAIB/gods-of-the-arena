@@ -20,6 +20,9 @@ class Gladiator < ApplicationRecord
   has_many :lost_gladiator_fights, ->{ lost }, class_name: 'GladiatorFight', dependent: :nullify
   has_many :lost_fights, through: :lost_gladiator_fights, source: :fight
 
+  has_many :planned_gladiator_fights, ->{ planned }, class_name: 'GladiatorFight', dependent: :nullify
+  has_many :planned_fights, through: :planned_gladiator_fights, source: :fight
+
   #==== Scopes ====
   scope :has_life_points, ->{ where.not(life_points: 0) }
 

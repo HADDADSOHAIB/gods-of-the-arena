@@ -1,8 +1,21 @@
+
+.mt-5.d-flex.justify-content-end
+  = link_to 'Gladiators list', gladiators_path, class: 'btn btn-primary btn-lg'
+  = link_to 'Recrute a gladiator', new_gladiator_path, class: 'btn btn-outline-primary ms-2 btn-lg'
+  = link_to 'Start a fight', new_fight_path, class: 'btn btn-danger ms-2 btn-lg'
+
 - if notice
   .alert.alert-success.alert-dismissible.fade.show{role: 'alert'}
     = notice
     %button.btn-close{type: 'button', 'data-bs-dismiss': 'alert', 'aria-label': 'Close'}
 
-
-.d-flex.justify-content-center
+.d-flex.justify-content-center.align-items-center.flex-column.flex-md-row
   = render partial: 'presentation_panel', locals: { gladiator: @gladiator, show_actions: true }
+  = render partial: 'statistic', locals: { statistic_service: @statistic_service }
+
+- if @gladiator.fights.any?
+  %h2.text-center.mt-4 This Gladiator took part in many battles
+  - @gladiator.fights.each do |fight|
+    = render partial: 'fights/fight_panel', locals: { fight: fight }
+- else 
+  %h2.text-center.my-4 This Gladiator never  took part in any battle

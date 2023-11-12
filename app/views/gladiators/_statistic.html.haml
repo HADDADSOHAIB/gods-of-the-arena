@@ -1,0 +1,27 @@
+.d-flex.flex-column.justify-content-center.align-items-center.m-3
+  .my-3.fs-3
+    Fight statistics
+  .card.card-standard-width.container-fluid
+    .card-body
+      .row
+        .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold
+          Number of fights:
+        .col-12.col-md-6.d-flex.justify-content-start
+          = statistic_service.number_of_fights
+        .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold
+          Number of won fights:
+        .col-12.col-md-6.d-flex.justify-content-start
+          = statistic_service.number_of_won_fights
+        .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold
+          Number of lost fights:
+        .col-12.col-md-6.d-flex.justify-content-start
+          = statistic_service.number_of_lost_fights
+        .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold
+          Number of planned fights:
+        .col-12.col-md-6.d-flex.justify-content-start
+          = statistic_service.number_of_planned_fights
+        .col-12.col-md-6.d-flex.justify-content-md-end.fw-bold
+          The ratio of winning:
+        .col-12.col-md-6.d-flex.justify-content-start
+          = statistic_service.winning_ratio
+          \%

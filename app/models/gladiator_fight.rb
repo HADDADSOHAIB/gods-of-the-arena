@@ -7,6 +7,7 @@ class GladiatorFight < ApplicationRecord
   #==== Scopes ====
   scope :won, ->{where(battle_won: true)}
   scope :lost, ->{where(battle_won: false)}
+  scope :planned, ->{where(battle_won: nil)}
 
   #==== Validations ====
   validates :gladiator_id, uniqueness: { scope: :fight_id }

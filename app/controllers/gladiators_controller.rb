@@ -10,6 +10,7 @@ class GladiatorsController < ApplicationController
   end
 
   def show
+    @statistic_service = Gladiators::FightStatistic.new(gladiator: @gladiator)
   end
 
   def new
