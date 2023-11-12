@@ -8,9 +8,9 @@ module Fights
     end
 
     def call
-      fight.gladiators.map do |gladiator|
-        [gladiator, Gladiators::ToolUsedInFight.new(gladiator: gladiator, fight: fight).call]
-      end.to_h
+      fight.gladiators.index_with do |gladiator|
+        Gladiators::ToolUsedInFight.new(gladiator: gladiator, fight: fight).call
+      end
     end
   end
 end
