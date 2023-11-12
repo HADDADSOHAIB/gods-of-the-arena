@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Gladiators
   class FightStatistic
     attr_reader :gladiator

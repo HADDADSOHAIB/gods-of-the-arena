@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CreateGladiatorFights < ActiveRecord::Migration[7.0]
   def change
     create_table :gladiator_fights do |t|

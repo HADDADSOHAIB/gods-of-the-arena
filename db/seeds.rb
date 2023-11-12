@@ -8,27 +8,31 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Gladiator.create([
-  {
-    name: 'Spartacus',
-    age: 30,
-    attack_points: 80
-  },
-  {
-    name: 'Gannicus',
-    age: 35
-  },
-  {
-    name: 'Oenomaus',
-    age: 40,
-    attack_points: 90
-  },
-  {
-    name: 'Varro',
-    age: 20
-  },
-  {
-    name: 'Barca',
-    age: 20,
-    attack_points: 70
-  },
-])
+                   {
+                     name: 'Spartacus',
+                     age: 30,
+                     attack_points: 80,
+                     experience_points: 20
+                   },
+                   {
+                     name: 'Gannicus',
+                     age: 35,
+                     experience_points: 15
+                   },
+                   {
+                     name: 'Oenomaus',
+                     age: 40,
+                     attack_points: 90,
+                     experience_points: 30
+                   },
+                   {
+                     name: 'Varro',
+                     age: 20
+                   },
+                   {
+                     name: 'Barca',
+                     age: 20,
+                     attack_points: 70,
+                     experience_points: 29
+                   }
+                 ])

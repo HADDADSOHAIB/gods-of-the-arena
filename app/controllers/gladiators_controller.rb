@@ -1,5 +1,6 @@
+# frozen_string_literal: true
 class GladiatorsController < ApplicationController
-  before_action :set_gladiator, only: %i[ show edit update destroy ]
+  before_action :set_gladiator, only: %i[show edit update destroy]
 
   # In ancient Rome, the ludus is where gladiators live,
   # train and prepare for the path of glory
@@ -17,14 +18,13 @@ class GladiatorsController < ApplicationController
     @gladiator = Gladiator.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @gladiator = Gladiator.new(gladiator_params)
 
     if @gladiator.save
-      redirect_to gladiator_url(@gladiator), notice: "Gladiator was successfully created."
+      redirect_to gladiator_url(@gladiator), notice: 'Gladiator was successfully created.'
     else
       render :new
     end
@@ -32,7 +32,7 @@ class GladiatorsController < ApplicationController
 
   def update
     if @gladiator.update(gladiator_params)
-      redirect_to gladiator_url(@gladiator), notice: "Gladiator was successfully updated."
+      redirect_to gladiator_url(@gladiator), notice: 'Gladiator was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -41,15 +41,17 @@ class GladiatorsController < ApplicationController
   def destroy
     @gladiator.destroy
 
-    redirect_to gladiators_url, notice: "Gladiator was successfully destroyed."
+    redirect_to gladiators_url, notice: 'Gladiator was successfully destroyed.'
   end
 
   private
+
   def set_gladiator
     @gladiator = Gladiator.find(params[:id])
   end
 
   def gladiator_params
-    params.require(:gladiator).permit(:name, :life_points, :attack_points, :magic_points, :health_status, :age, :avatar, :experience_points)
+    params.require(:gladiator).permit(:name, :life_points, :attack_points, :magic_points, :health_status, :age,
+                                      :avatar, :experience_points)
   end
 end

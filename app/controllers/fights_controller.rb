@@ -1,5 +1,6 @@
+# frozen_string_literal: true
 class FightsController < ApplicationController
-  before_action :set_fight, only: %i[ show destroy execute]
+  before_action :set_fight, only: %i[show destroy execute]
 
   def index
     @fights = Fight.all.order(id: :desc)
@@ -7,7 +8,10 @@ class FightsController < ApplicationController
 
   def new
     @gladiators = Gladiator.health_status_ready_for_fight.has_life_points
-    return redirect_to gladiators_path, alert: 'There is no gladiators ready to fight with life points to start a fight' if @gladiators.empty?
+    if @gladiators.empty?
+      return redirect_to gladiators_path,
+                         alert: 'There is no gladiators ready to fight with life points to start a fight'
+    end
 
     @fight_form = FightForm.new
   end
@@ -16,7 +20,7 @@ class FightsController < ApplicationController
     @fight_form = FightForm.new(**fight_params.to_h.symbolize_keys)
 
     if @fight_form.save
-      redirect_to fight_url(@fight_form.fight), notice: "The fight was successfully created."
+      redirect_to fight_url(@fight_form.fight), notice: 'The fight was successfully created.'
     else
       @gladiators = Gladiator.health_status_ready_for_fight.has_life_points
       render :new
@@ -29,7 +33,7 @@ class FightsController < ApplicationController
     execute_service = Fights::Execute.new(fight: @fight)
 
     if execute_service.call
-      redirect_to fight_url(@fight), notice: "The fight was successfully executed."
+      redirect_to fight_url(@fight), notice: 'The fight was successfully executed.'
     else
       redirect_to fight_url(@fight), alert: "Errors, #{execute_service.error_message}"
     end
