@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :fights, except: %i[update edit] do
+  resources :fights, except: %i[update edit destroy] do
     member do
       get :execute
     end

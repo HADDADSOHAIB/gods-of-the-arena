@@ -4,7 +4,7 @@ require 'rails_helper'
 describe PagesController, type: :request do
   describe 'GET index' do
     it 'renders successfully' do
-      get '/'
+      get root_url
       expect(response).to be_successful
     end
   end

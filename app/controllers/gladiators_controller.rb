@@ -34,7 +34,7 @@ class GladiatorsController < ApplicationController
     if @gladiator.update(gladiator_params)
       redirect_to gladiator_url(@gladiator), notice: 'Gladiator was successfully updated.'
     else
-      render :edit, status: :unprocessable_entity
+      render :edit
     end
   end
 
